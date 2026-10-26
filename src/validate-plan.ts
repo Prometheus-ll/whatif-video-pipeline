@@ -71,8 +71,10 @@ export function validatePlan(value: unknown): string[] {
     if (typeof scene.event_state !== "string" || scene.event_state.trim().length < 3 || scene.event_state.length > 180) errors.push(`${prefix}.event_state must be 3–180 characters.`);
     if (!Array.isArray(scene.visible_changes) || scene.visible_changes.length < 1 || scene.visible_changes.length > 8 || scene.visible_changes.some((item) => typeof item !== "string" || item.trim().length < 3 || item.length > 180)) errors.push(`${prefix}.visible_changes must contain 1–8 descriptive strings (3–180 characters each).`);
     if (typeof scene.time_label !== "string" || scene.time_label.trim().length < 1 || scene.time_label.length > 40) errors.push(`${prefix}.time_label must be 1–40 characters.`);
-    else if (sceneIds.has(scene.id)) errors.push(`${prefix}.id duplicates another scene.`);
-    else sceneIds.add(scene.id);
+    if (typeof scene.id === "string" && /^[a-z0-9-]{1,40}$/.test(scene.id)) {
+      if (sceneIds.has(scene.id)) errors.push(`${prefix}.id duplicates another scene.`);
+      else sceneIds.add(scene.id);
+    }
     if (typeof scene.duration_seconds !== "number" || scene.duration_seconds < 2 || scene.duration_seconds > 20) errors.push(`${prefix}.duration_seconds must be 2–20.`);
     else totalDuration += scene.duration_seconds;
     if (typeof scene.narration !== "string" || scene.narration.trim().length < 4 || scene.narration.length > 800) errors.push(`${prefix}.narration must be 4–800 characters.`);
