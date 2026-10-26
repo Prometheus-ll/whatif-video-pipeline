@@ -8,6 +8,11 @@ export type Claim = {
 
 export type Scene = {
   id: string;
+  environment: string;
+  camera_pov: "first_person_ground_level";
+  event_state: string;
+  visible_changes: string[];
+  time_label: string;
   duration_seconds: number;
   narration: string;
   visual_type: "cinematic_image" | "diagram" | "timeline" | "licensed_clip";
@@ -61,6 +66,11 @@ export function validatePlan(value: unknown): string[] {
     const scene = rawScene as Partial<Scene>;
     const prefix = `scenes[${index}]`;
     if (typeof scene.id !== "string" || !/^[a-z0-9-]{1,40}$/.test(scene.id)) errors.push(`${prefix}.id is invalid.`);
+    if (typeof scene.environment !== "string" || scene.environment.trim().length < 3 || scene.environment.length > 180) errors.push(`${prefix}.environment must be 3–180 characters.`);
+    if (scene.camera_pov !== "first_person_ground_level") errors.push(`${prefix}.camera_pov must be first_person_ground_level.`);
+    if (typeof scene.event_state !== "string" || scene.event_state.trim().length < 3 || scene.event_state.length > 180) errors.push(`${prefix}.event_state must be 3–180 characters.`);
+    if (!Array.isArray(scene.visible_changes) || scene.visible_changes.length < 1 || scene.visible_changes.length > 8 || scene.visible_changes.some((item) => typeof item !== "string" || item.trim().length < 3 || item.length > 180)) errors.push(`${prefix}.visible_changes must contain 1–8 descriptive strings (3–180 characters each).`);
+    if (typeof scene.time_label !== "string" || scene.time_label.trim().length < 1 || scene.time_label.length > 40) errors.push(`${prefix}.time_label must be 1–40 characters.`);
     else if (sceneIds.has(scene.id)) errors.push(`${prefix}.id duplicates another scene.`);
     else sceneIds.add(scene.id);
     if (typeof scene.duration_seconds !== "number" || scene.duration_seconds < 2 || scene.duration_seconds > 20) errors.push(`${prefix}.duration_seconds must be 2–20.`);
