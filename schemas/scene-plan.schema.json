@@ -3,18 +3,54 @@
   "title": "What-if Shorts Scene Plan",
   "type": "object",
   "additionalProperties": false,
-  "required": ["video_id", "title", "format", "target_duration_seconds", "narration_style", "scenes", "sources", "status"],
+  "required": [
+    "video_id",
+    "title",
+    "format",
+    "target_duration_seconds",
+    "narration_style",
+    "scenes",
+    "sources",
+    "status"
+  ],
   "properties": {
-    "video_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,63}$" },
-    "title": { "type": "string", "minLength": 8, "maxLength": 100 },
+    "video_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{2,63}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 100
+    },
     "format": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["width", "height", "fps"],
-      "properties": { "width": { "const": 1080 }, "height": { "const": 1920 }, "fps": { "const": 30 } }
+      "required": [
+        "width",
+        "height",
+        "fps"
+      ],
+      "properties": {
+        "width": {
+          "const": 1080
+        },
+        "height": {
+          "const": 1920
+        },
+        "fps": {
+          "const": 30
+        }
+      }
     },
-    "target_duration_seconds": { "type": "number", "minimum": 30, "maximum": 90 },
-    "narration_style": { "const": "natural_documentary" },
+    "target_duration_seconds": {
+      "type": "number",
+      "minimum": 30,
+      "maximum": 90
+    },
+    "narration_style": {
+      "const": "natural_documentary"
+    },
     "scenes": {
       "type": "array",
       "minItems": 3,
@@ -22,21 +58,163 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "duration_seconds", "narration", "visual_type"],
+        "required": [
+          "id",
+          "environment",
+          "camera_pov",
+          "event_state",
+          "visible_changes",
+          "time_label",
+          "duration_seconds",
+          "narration",
+          "visual_type"
+        ],
         "properties": {
-          "id": { "type": "string", "pattern": "^[a-z0-9-]{1,40}$" },
-          "duration_seconds": { "type": "number", "minimum": 2, "maximum": 20 },
-          "narration": { "type": "string", "minLength": 4, "maxLength": 800 },
-          "visual_type": { "enum": ["cinematic_image", "diagram", "timeline", "licensed_clip"] },
-          "visual_prompt": { "type": "string", "maxLength": 500 },
-          "camera_motion": { "enum": ["none", "slow_push_in", "slow_pull_out", "pan_left", "pan_right"] },
-          "overlay": { "type": "object", "additionalProperties": false, "required": ["type", "text"], "properties": { "type": { "enum": ["headline", "label", "callout", "timeline"] }, "text": { "type": "string", "maxLength": 90 } } },
-          "sound_effects": { "type": "array", "items": { "type": "string", "maxLength": 80 } },
-          "claims": { "type": "array", "items": { "type": "object", "required": ["text"], "properties": { "text": { "type": "string" }, "source_urls": { "type": "array", "items": { "type": "string", "format": "uri" } }, "speculative": { "type": "boolean" } }, "additionalProperties": false } }
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]{1,40}$"
+          },
+          "duration_seconds": {
+            "type": "number",
+            "minimum": 2,
+            "maximum": 20
+          },
+          "narration": {
+            "type": "string",
+            "minLength": 4,
+            "maxLength": 800
+          },
+          "visual_type": {
+            "enum": [
+              "cinematic_image",
+              "diagram",
+              "timeline",
+              "licensed_clip"
+            ]
+          },
+          "visual_prompt": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "camera_motion": {
+            "enum": [
+              "none",
+              "slow_push_in",
+              "slow_pull_out",
+              "pan_left",
+              "pan_right"
+            ]
+          },
+          "overlay": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "type",
+              "text"
+            ],
+            "properties": {
+              "type": {
+                "enum": [
+                  "headline",
+                  "label",
+                  "callout",
+                  "timeline"
+                ]
+              },
+              "text": {
+                "type": "string",
+                "maxLength": 90
+              }
+            }
+          },
+          "sound_effects": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "maxLength": 80
+            }
+          },
+          "claims": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "text"
+              ],
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "source_urls": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "uri"
+                  }
+                },
+                "speculative": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "environment": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 180
+          },
+          "camera_pov": {
+            "const": "first_person_ground_level"
+          },
+          "event_state": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 180
+          },
+          "visible_changes": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 8,
+            "items": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 180
+            }
+          },
+          "time_label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40
+          }
         }
       }
     },
-    "sources": { "type": "array", "items": { "type": "object", "required": ["url", "title"], "properties": { "url": { "type": "string", "format": "uri" }, "title": { "type": "string" }, "accessed_at": { "type": "string" } }, "additionalProperties": false } },
-    "status": { "const": "planned" }
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "url",
+          "title"
+        ],
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "title": {
+            "type": "string"
+          },
+          "accessed_at": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "status": {
+      "const": "planned"
+    }
   }
 }
