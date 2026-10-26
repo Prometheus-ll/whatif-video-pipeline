@@ -1,7 +1,11 @@
 {
   "video_id": "earth-stops-spinning",
   "title": "What If Earth Suddenly Stopped Spinning?",
-  "format": { "width": 1080, "height": 1920, "fps": 30 },
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
   "target_duration_seconds": 45,
   "narration_style": "natural_documentary",
   "scenes": [
@@ -11,8 +15,24 @@
       "narration": "Imagine if Earth suddenly stopped rotating. What would happen next?",
       "visual_type": "cinematic_image",
       "camera_motion": "slow_push_in",
-      "overlay": { "type": "headline", "text": "WHAT IF EARTH STOPPED?" },
-      "claims": [{ "text": "This is a hypothetical thought experiment, not a prediction.", "speculative": true }]
+      "overlay": {
+        "type": "headline",
+        "text": "WHAT IF EARTH STOPPED?"
+      },
+      "claims": [
+        {
+          "text": "This is a hypothetical thought experiment, not a prediction.",
+          "speculative": true
+        }
+      ],
+      "environment": "A quiet residential street at dawn, camera at human eye height",
+      "event_state": "Normal rotation before the hypothetical event",
+      "visible_changes": [
+        "Leaves move gently in a light breeze",
+        "Distant traffic passes through the intersection"
+      ],
+      "time_label": "BEFORE",
+      "camera_pov": "first_person_ground_level"
     },
     {
       "id": "first-seconds",
@@ -20,8 +40,25 @@
       "narration": "The ground would stop, but the atmosphere and oceans would still have momentum. The details depend on how the stop happens.",
       "visual_type": "diagram",
       "camera_motion": "pan_right",
-      "overlay": { "type": "callout", "text": "MOMENTUM DOESN'T VANISH" },
-      "claims": [{ "text": "Outcome depends on the hypothetical stopping mechanism.", "speculative": true }]
+      "overlay": {
+        "type": "callout",
+        "text": "MOMENTUM DOESN'T VANISH"
+      },
+      "claims": [
+        {
+          "text": "Outcome depends on the hypothetical stopping mechanism.",
+          "speculative": true
+        }
+      ],
+      "environment": "Same residential street, first-person eye-level camera",
+      "event_state": "The solid ground stops abruptly while the viewer remains standing",
+      "visible_changes": [
+        "A sharp jolt shakes the camera",
+        "Loose leaves and dust continue moving past the viewer",
+        "A street sign rattles violently"
+      ],
+      "time_label": "T = 0",
+      "camera_pov": "first_person_ground_level"
     },
     {
       "id": "hours-later",
@@ -29,8 +66,25 @@
       "narration": "In a simplified scenario, powerful winds and moving water could reshape coastlines. This is an illustration, not a precise forecast.",
       "visual_type": "timeline",
       "camera_motion": "slow_push_in",
-      "overlay": { "type": "timeline", "text": "HOURS LATER" },
-      "claims": [{ "text": "The scenario is simplified and speculative.", "speculative": true }]
+      "overlay": {
+        "type": "timeline",
+        "text": "HOURS LATER"
+      },
+      "claims": [
+        {
+          "text": "The scenario is simplified and speculative.",
+          "speculative": true
+        }
+      ],
+      "environment": "Same street, first-person view facing down the road",
+      "event_state": "The atmosphere and objects retain momentum in the simplified scenario",
+      "visible_changes": [
+        "Dust and loose debris sweep horizontally through frame",
+        "Trees bend and branches whip in the wind",
+        "The camera shakes from the passing gust"
+      ],
+      "time_label": "SECONDS LATER",
+      "camera_pov": "first_person_ground_level"
     },
     {
       "id": "the-long-view",
@@ -38,8 +92,25 @@
       "narration": "Over longer timescales, a non-rotating Earth would have a very different day-night pattern and climate system.",
       "visual_type": "diagram",
       "camera_motion": "slow_pull_out",
-      "overlay": { "type": "label", "text": "A DIFFERENT WORLD" },
-      "claims": [{ "text": "The long-term outcome depends on the exact scenario.", "speculative": true }]
+      "overlay": {
+        "type": "label",
+        "text": "A DIFFERENT WORLD"
+      },
+      "claims": [
+        {
+          "text": "The long-term outcome depends on the exact scenario.",
+          "speculative": true
+        }
+      ],
+      "environment": "Residential street under a darkening, dust-filled sky",
+      "event_state": "Catastrophic environmental disruption continues in this illustrative scenario",
+      "visible_changes": [
+        "Visibility drops behind moving dust",
+        "Debris crosses the road",
+        "The sky becomes hazy and the light dims"
+      ],
+      "time_label": "MINUTES LATER",
+      "camera_pov": "first_person_ground_level"
     },
     {
       "id": "the-question",
@@ -47,8 +118,20 @@
       "narration": "But the biggest question is how Earth could stop at all. What impossible what-if should we explore next?",
       "visual_type": "cinematic_image",
       "camera_motion": "slow_push_in",
-      "overlay": { "type": "headline", "text": "WHAT SHOULD WE TEST NEXT?" },
-      "claims": []
+      "overlay": {
+        "type": "headline",
+        "text": "WHAT SHOULD WE TEST NEXT?"
+      },
+      "claims": [],
+      "environment": "Same location, ground-level view toward the horizon",
+      "event_state": "The immediate event has passed into an unstable aftermath",
+      "visible_changes": [
+        "Dust settles slowly in the foreground",
+        "Damaged trees and scattered debris line the street",
+        "The horizon remains hazy"
+      ],
+      "time_label": "LATER",
+      "camera_pov": "first_person_ground_level"
     },
     {
       "id": "outro",
@@ -56,8 +139,25 @@
       "narration": "Follow the timeline, question the assumptions, and remember: a thought experiment is not a prediction.",
       "visual_type": "timeline",
       "camera_motion": "none",
-      "overlay": { "type": "label", "text": "WHAT IF…?" },
-      "claims": [{ "text": "This video presents a hypothetical thought experiment.", "speculative": true }]
+      "overlay": {
+        "type": "label",
+        "text": "WHAT IF…?"
+      },
+      "claims": [
+        {
+          "text": "This video presents a hypothetical thought experiment.",
+          "speculative": true
+        }
+      ],
+      "environment": "Same first-person location, still looking down the changed street",
+      "event_state": "Narration steps back to clarify uncertainty and assumptions",
+      "visible_changes": [
+        "Camera slowly moves forward",
+        "Haze drifts across the distant street",
+        "A restrained scientific callout appears"
+      ],
+      "time_label": "THE BIG QUESTION",
+      "camera_pov": "first_person_ground_level"
     }
   ],
   "sources": [],
