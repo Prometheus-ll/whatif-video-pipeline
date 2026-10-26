@@ -40,8 +40,9 @@ test("requires sources for non-speculative claims", () => {
 test("requires a first-person, topic-specific visual plan for every scene", async () => {
   const plan = JSON.parse(await readFile(new URL("../examples/earth-stops-spinning.json", import.meta.url), "utf8"));
   assert.deepEqual(validatePlan(plan), []);
-  delete plan.scenes[0].environment;
-  delete plan.scenes[0].visible_changes;
+  const firstScene = plan.scenes[0] as Partial<(typeof plan.scenes)[number]>;
+  delete firstScene.environment;
+  delete firstScene.visible_changes;
   assert.ok(validatePlan(plan).some((error) => error.includes("environment")));
   assert.ok(validatePlan(plan).some((error) => error.includes("visible_changes")));
 });
