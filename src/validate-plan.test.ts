@@ -50,7 +50,7 @@ test("requires a first-person, topic-specific visual plan for every scene", asyn
 test("builds a topic-driven first-person composition with deterministic scene boundaries", async () => {
   const plan = JSON.parse(await readFile(new URL("../examples/earth-stops-spinning.json", import.meta.url), "utf8")) as ScenePlan;
   const html = buildSimulationHtml(plan);
-  assert.match(html, /data-composition-id="whatif-001"/);
+  assert.ok(html.includes(`data-composition-id="${plan.video_id}"`));
   assert.match(html, /FIRST-PERSON POV/);
   assert.match(html, /setSimulationFrame/);
   const escapeHtmlForTest = (value: string) => value.replace(/[&<>"']/g, (character) => ({
