@@ -1,0 +1,14 @@
+node_modules/
+dist/
+renders/
+jobs/
+.env
+.env.*
+!.env.example
+*.mp4
+*.wav
+*.mp3
+*.png
+*.jpg
+*.webp
+.DS_Store
