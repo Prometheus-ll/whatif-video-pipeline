@@ -1,0 +1,17 @@
+{
+  "name": "whatif-shorts-factory",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Low-cost automated What-if YouTube Shorts pipeline",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "validate": "npm run build && node dist/cli.js examples/earth-stops-spinning.json",
+    "test": "npm run build && node --test dist/**/*.test.js"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "typescript": "^5.8.3"
+  }
+}
