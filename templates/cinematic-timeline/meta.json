@@ -1,0 +1,9 @@
+{
+  "name": "whatif-cinematic-timeline",
+  "id": "whatif-cinematic-timeline",
+  "description": "Vertical cinematic timeline demo composition",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration": 45
+}
