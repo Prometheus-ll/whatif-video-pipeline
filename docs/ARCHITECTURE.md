@@ -1,5 +1,14 @@
 # Architecture and delivery plan
 
+## Visual direction: first-person, topic-adaptive simulations
+
+The default camera is a human-scale first-person POV located on Earth, not an exterior space camera. Every episode starts with a topic-specific setting (street, home, forest, shoreline, field, etc.), then shows visible changes over time. The timeline and scientific overlays support the scene; they are not a substitute for environmental simulation.
+
+Topic examples include air circulation suddenly stopping, the Moon disappearing, or a hypothetical loss of all males. Topics must be selected independently for each run; never hard-code Earth stopping its rotation as the channel premise. The scene planner must select setting, visual motifs, physical consequences, time jumps, and explanatory overlays from the current topic.
+
+Use layered procedural animation for low-cost motion (weather, particles, light, camera drift, objects, diagrams) and AI-generated or properly licensed image/video assets for topic-specific realism. For high-quality first-person realism, the long-term asset adapter should support image-to-video or short generated clips where a free quota exists; otherwise use layered stills with parallax and moving elements, and clearly treat them as illustrative. Avoid representing a still frame with a progress bar as a completed simulation.
+
+A topic-specific scene plan should define per beat: environment, camera POV, event state, visible changes, time label, narration, scientific overlay, and source-backed claims. The renderer should consume this data and use approved components rather than model-generated executable code.
 ## Data flow
 
 1. GitHub Actions manual dispatch or schedule creates a unique job ID and records configuration/input hashes.
