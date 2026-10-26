@@ -1,0 +1,65 @@
+{
+  "video_id": "earth-stops-spinning",
+  "title": "What If Earth Suddenly Stopped Spinning?",
+  "format": { "width": 1080, "height": 1920, "fps": 30 },
+  "target_duration_seconds": 45,
+  "narration_style": "natural_documentary",
+  "scenes": [
+    {
+      "id": "the-hook",
+      "duration_seconds": 5,
+      "narration": "Imagine if Earth suddenly stopped rotating. What would happen next?",
+      "visual_type": "cinematic_image",
+      "camera_motion": "slow_push_in",
+      "overlay": { "type": "headline", "text": "WHAT IF EARTH STOPPED?" },
+      "claims": [{ "text": "This is a hypothetical thought experiment, not a prediction.", "speculative": true }]
+    },
+    {
+      "id": "first-seconds",
+      "duration_seconds": 8,
+      "narration": "The ground would stop, but the atmosphere and oceans would still have momentum. The details depend on how the stop happens.",
+      "visual_type": "diagram",
+      "camera_motion": "pan_right",
+      "overlay": { "type": "callout", "text": "MOMENTUM DOESN'T VANISH" },
+      "claims": [{ "text": "Outcome depends on the hypothetical stopping mechanism.", "speculative": true }]
+    },
+    {
+      "id": "hours-later",
+      "duration_seconds": 8,
+      "narration": "In a simplified scenario, powerful winds and moving water could reshape coastlines. This is an illustration, not a precise forecast.",
+      "visual_type": "timeline",
+      "camera_motion": "slow_push_in",
+      "overlay": { "type": "timeline", "text": "HOURS LATER" },
+      "claims": [{ "text": "The scenario is simplified and speculative.", "speculative": true }]
+    },
+    {
+      "id": "the-long-view",
+      "duration_seconds": 8,
+      "narration": "Over longer timescales, a non-rotating Earth would have a very different day-night pattern and climate system.",
+      "visual_type": "diagram",
+      "camera_motion": "slow_pull_out",
+      "overlay": { "type": "label", "text": "A DIFFERENT WORLD" },
+      "claims": [{ "text": "The long-term outcome depends on the exact scenario.", "speculative": true }]
+    },
+    {
+      "id": "the-question",
+      "duration_seconds": 8,
+      "narration": "But the biggest question is how Earth could stop at all. What impossible what-if should we explore next?",
+      "visual_type": "cinematic_image",
+      "camera_motion": "slow_push_in",
+      "overlay": { "type": "headline", "text": "WHAT SHOULD WE TEST NEXT?" },
+      "claims": []
+    },
+    {
+      "id": "outro",
+      "duration_seconds": 8,
+      "narration": "Follow the timeline, question the assumptions, and remember: a thought experiment is not a prediction.",
+      "visual_type": "timeline",
+      "camera_motion": "none",
+      "overlay": { "type": "label", "text": "WHAT IF…?" },
+      "claims": [{ "text": "This video presents a hypothetical thought experiment.", "speculative": true }]
+    }
+  ],
+  "sources": [],
+  "status": "planned"
+}
