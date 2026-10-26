@@ -53,10 +53,15 @@ test("builds a topic-driven first-person composition with deterministic scene bo
   assert.match(html, /data-composition-id="whatif-001"/);
   assert.match(html, /FIRST-PERSON POV/);
   assert.match(html, /setSimulationFrame/);
+  const escapeHtmlForTest = (value: string) => value.replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  })[character] ?? character);
   for (const scene of plan.scenes) {
-    assert.ok(html.includes(scene.environment));
-    assert.ok(html.includes(scene.event_state));
-    for (const change of scene.visible_changes) assert.ok(html.includes(change));
+    assert.ok(html.includes(escapeHtmlForTest(scene.environment)), `missing environment for scene ${scene.id}`);
+    assert.ok(html.includes(escapeHtmlForTest(scene.event_state)), `missing event state for scene ${scene.id}`);
+    for (const change of scene.visible_changes) {
+      assert.ok(html.includes(escapeHtmlForTest(change)), `missing visible change for scene ${scene.id}: ${change}`);
+    }
   }
   assert.equal((html.match(/class="scene scene-/g) ?? []).length, plan.scenes.length);
 });
