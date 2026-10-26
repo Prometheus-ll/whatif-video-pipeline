@@ -107,7 +107,7 @@ ${scenes}
  };
  window.setSimulationTime=(seconds)=>window.setSimulationFrame(seconds*fps);
  window.setSimulationFrame(Number(window.__FRAME__||0));
- if(!(" __FRAME__ " in window)){
+ if(!("__FRAME__" in window)){
    let last=-1;
    const preview=()=>{const frame=Math.floor(performance.now()/1000*fps)%totalFrames;if(frame!==last){window.setSimulationFrame(frame);last=frame}requestAnimationFrame(preview)};
    // Preview playback is convenient in a browser. Deterministic renderers should call setSimulationFrame themselves.
