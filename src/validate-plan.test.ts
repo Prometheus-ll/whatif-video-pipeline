@@ -1,7 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { validatePlan } from "./validate-plan.js";
+import { validatePlan, type ScenePlan } from "./validate-plan.js";
+import { buildSimulationHtml } from "./render/build-simulation-html.js";
 
 test("accepts the example plan", async () => {
   const plan = JSON.parse(await readFile(new URL("../examples/earth-stops-spinning.json", import.meta.url), "utf8"));
@@ -43,4 +44,18 @@ test("requires a first-person, topic-specific visual plan for every scene", asyn
   delete plan.scenes[0].visible_changes;
   assert.ok(validatePlan(plan).some((error) => error.includes("environment")));
   assert.ok(validatePlan(plan).some((error) => error.includes("visible_changes")));
+});
+
+test("builds a topic-driven first-person composition with deterministic scene boundaries", async () => {
+  const plan = JSON.parse(await readFile(new URL("../examples/earth-stops-spinning.json", import.meta.url), "utf8")) as ScenePlan;
+  const html = buildSimulationHtml(plan);
+  assert.match(html, /data-composition-id="whatif-001"/);
+  assert.match(html, /FIRST-PERSON POV/);
+  assert.match(html, /setSimulationFrame/);
+  for (const scene of plan.scenes) {
+    assert.ok(html.includes(scene.environment));
+    assert.ok(html.includes(scene.event_state));
+    for (const change of scene.visible_changes) assert.ok(html.includes(change));
+  }
+  assert.equal((html.match(/class="scene scene-/g) ?? []).length, plan.scenes.length);
 });
