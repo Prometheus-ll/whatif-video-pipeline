@@ -4,14 +4,20 @@
   "private": true,
   "description": "Low-cost automated What-if YouTube Shorts pipeline",
   "type": "module",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "validate": "npm run build && node dist/cli.js examples/earth-stops-spinning.json",
-    "test": "npm run build && node --test dist/**/*.test.js"
+    "test": "npm run build && node --test dist/**/*.test.js",
+    "render:draft": "npm run build && node dist/render-draft.js examples/earth-stops-spinning.json"
   },
   "devDependencies": {
     "@types/node": "^22.15.0",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "playwright": "^1.55.0"
   }
 }
