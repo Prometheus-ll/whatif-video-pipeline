@@ -1,0 +1,56 @@
+name: Render demo draft
+
+on:
+  workflow_dispatch:
+    inputs:
+      quality:
+        description: HyperFrames render quality
+        required: true
+        type: choice
+        options: [draft, standard]
+        default: draft
+
+permissions:
+  contents: read
+
+concurrency:
+  group: render-draft-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm install --package-lock-only
+      - run: npm ci
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - run: npm run validate
+      - name: Install HyperFrames
+        run: npm install --no-save hyperframes
+      - name: Check composition
+        run: npx hyperframes doctor
+      - name: Lint composition
+        run: npx hyperframes lint ./templates/cinematic-timeline
+      - name: Render vertical MP4
+        run: |
+          mkdir -p renders
+          npx hyperframes render ./templates/cinematic-timeline --output ./renders/whatif-demo.mp4 --fps 30 --quality "${{ inputs.quality }}"
+      - name: Verify output media
+        run: |
+          test -s renders/whatif-demo.mp4
+          ffprobe -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate -of json renders/whatif-demo.mp4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: whatif-demo-draft
+          path: |
+            renders/whatif-demo.mp4
+            examples/earth-stops-spinning.json
+            docs/ARCHITECTURE.md
+          if-no-files-found: error
+          retention-days: 7
