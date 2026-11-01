@@ -55,7 +55,7 @@ export function buildSimulationHtml(plan: ScenePlan): string {
 *{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#050b12;color:#f4f8ff;font-family:Inter,Arial,sans-serif}
 #composition{position:relative;width:1080px;height:1920px;overflow:hidden;background:#081521}
 .scene{position:absolute;inset:0;overflow:hidden;opacity:0;visibility:hidden;transform:translateZ(0);background:#102a38}
-.scene.active{opacity:1;visibility:visible}
+.scene.active{opacity:1;visibility:visible}.scene:not(.active) *{animation-play-state:paused}
 .environment{position:absolute;inset:0;background:linear-gradient(180deg,#15374c 0%,#86a9b2 38%,#536e5d 39%,#182c27 100%);animation:environmentDrift 12s ease-in-out infinite alternate}
 .scene-1 .environment{background:linear-gradient(180deg,#273e51 0%,#a6a6a0 40%,#5c5146 41%,#211e20 100%)}
 .scene-2 .environment{background:linear-gradient(180deg,#182d48 0%,#647c8a 40%,#454d48 41%,#151a1c 100%)}
