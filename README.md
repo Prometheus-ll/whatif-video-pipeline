@@ -52,7 +52,7 @@ AI-generated factual claims must include source URLs/evidence, or be clearly lab
 
 ## Draft artifact contents
 
-The target delivery package is `video.mp4`, `thumbnail.png`, `captions.srt`, `script.md`, `sources.json`, and `qc-report.json`. The starter milestone currently focuses on validating plans and rendering the deterministic demo; later milestones add TTS, sourced assets, captions, and full QC.
+The target delivery package is `video.mp4`, `thumbnail.png`, `captions.srt`, `script.md`, `sources.json`, and `qc-report.json`. The current visual draft renderer records the browser composition as one WebM capture and transcodes it to MP4 with FFmpeg. This avoids writing one PNG file per frame. It is still a procedural visual prototype: narration, topic-specific generated/licensed footage, captions, and full QC are later milestones.
 
 ## Safety
 
